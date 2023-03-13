@@ -1,9 +1,11 @@
 .paper-container{
-    margin: 0 auto;
+    margin: 20 auto;
     position: relative;
     display: flex;
     flex-direction: column;
     filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
+    background-color: blue;
+
   }
   
   .page-container {
@@ -13,14 +15,10 @@
     /* height: 600px; */
     margin: 0 auto;
     border: none;
-    background-color: red;
+    background-color: yellow;
     padding: 16px;
   }
-  .home-content-container {
-    position: relative;
-    width: 100%;
-  }
-  
+
   .main-layer {
     display: flex;
     position: relative;
@@ -28,13 +26,13 @@
     top: 0px;
     z-index: 2;
   }
-  .highlight-layer {
-    display: flex;
-    height: 100% !important;
-    background-color: #F3C18E !important;
-    border-radius: 15px !important;
+
+  .home-content-container {
     position: relative;
-    bottom: 80px;
-    height: inherit;
+    width: 100%;
+    background-color: red;
   }
+  
+  
+  
   

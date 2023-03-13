@@ -11,21 +11,18 @@ import {
 
 import HeaderBar from './components/header/HeaderBar'
 import Landing from './routes/landing'
+import Detection from './routes/detection';
 
 function App() {
-
+  
   return (
-    // <div>
-    //   <p>
-    //     route
-    //   </p>
-    // </div>
+
     <Router>
       <HeaderBar />
       <div>
         <Switch>
-          <Route path="/about">
-            <Landing />
+          <Route path="/detection">
+            <Detection />
           </Route>
           <Route path="/users">
             <Landing />
