@@ -8,6 +8,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
+import HeaderBar from './components/header/HeaderBar'
 import Landing from './routes/landing'
 
 function App() {
@@ -19,35 +21,20 @@ function App() {
     //   </p>
     // </div>
     <Router>
-    <div>
-      {/* <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-        </ul>
-      </nav> */}
-
-      {/* A <Switch> looks through its children <Route>s and
-          renders the first one that matches the current URL. */}
-      <Switch>
-        <Route path="/about">
-          <Landing />
-        </Route>
-        <Route path="/users">
-          <Landing />
-        </Route>
-        <Route path="/">
-          <Landing />
-        </Route>
-      </Switch>
-    </div>
+      <HeaderBar />
+      <div>
+        <Switch>
+          <Route path="/about">
+            <Landing />
+          </Route>
+          <Route path="/users">
+            <Landing />
+          </Route>
+          <Route path="/">
+            <Landing />
+          </Route>
+        </Switch>
+      </div>
   </Router>
   )
 }
