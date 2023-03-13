@@ -5,8 +5,7 @@ import ReactDOM from "react-dom/client";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import HeaderBar from './components/header/HeaderBar'

@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import Container from '@mui/material/Container'
 import HomeIcon from '@mui/icons-material/Home';
+import { useHistory } from 'react-router-dom';
 
 import {Button} from '@mui/material'
 
@@ -22,9 +23,10 @@ export default function MenuAppBar() {
       }
     })
   }, [])
-
+  const history = useHistory();
   const handleHomeClick=()=>{
-    //route to landing(home page)
+    history.push('/');
+    console.log(history)
   }
 
   return (
