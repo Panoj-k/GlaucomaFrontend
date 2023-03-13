@@ -1,0 +1,40 @@
+.paper-container{
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
+  }
+  
+  .page-container {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    /* height: 600px; */
+    margin: 0 auto;
+    border: none;
+    background-color: red;
+    padding: 16px;
+  }
+  .home-content-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .main-layer {
+    display: flex;
+    position: relative;
+    border-radius: 15px !important;
+    top: 0px;
+    z-index: 2;
+  }
+  .highlight-layer {
+    display: flex;
+    height: 100% !important;
+    background-color: #F3C18E !important;
+    border-radius: 15px !important;
+    position: relative;
+    bottom: 80px;
+    height: inherit;
+  }
+  
