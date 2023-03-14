@@ -35,9 +35,15 @@ const Detection = () => {
                 Upload step: Please drag and drop pictures in the box below or click select pictures button to add pictures.<br />
                 Accepted File Types: .jpg, .png, .tif. Maximum picture at 20.
             </h6>
-            <Button>
-                Select Pictures
-            </Button>
+            <Box textAlign={'center'}>
+                <Button
+                    variant='contained'
+                    sx = {{ alignSelf: 'center'}}
+                >
+                    Select Pictures
+                </Button>
+            </Box>
+            
 
 
         </Container>
