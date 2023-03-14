@@ -31,7 +31,7 @@ export default function MenuAppBar() {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, marginBottom: 10 }}>
         <AppBar className='MuiToolbar-center' elevation={elevation}>
           <Container maxWidth='lg'>
             <Toolbar>
@@ -39,7 +39,7 @@ export default function MenuAppBar() {
                 size='large'
                 edge='start'
                 color='inherit'
-                aria-label='menu'
+                aria-label='home'
                 sx={{ mr: 2 }}
                 onClick={handleHomeClick}
               >
