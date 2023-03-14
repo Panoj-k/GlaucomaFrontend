@@ -12,20 +12,30 @@ const Detection = () => {
 
   const steps = ["Upload", "Review", "Result"];
   //---picture drop
-  const [imageUrl, setImageUrl] = useState("");
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
-    const reader = new FileReader();
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
 
-    reader.onload = () => {
-      setImageUrl(reader.result as string);
-    };
+  const onDrop = useCallback(
+    (acceptedFiles: File[]) => {
+      const readers = acceptedFiles.map((file) => {
+        const reader = new FileReader();
 
-    reader.readAsDataURL(file);
+        return new Promise<string>((resolve, reject) => {
+          reader.onload = () => {
+            resolve(reader.result as string);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      });
 
-    setStep(1);
-  }, []);
+      Promise.all(readers)
+        .then((urls) => setImageUrls([...imageUrls, ...urls]))
+        .catch((error) => console.error(error));
+      setStep(1);
+    },
+    [imageUrls]
+  );
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
@@ -69,15 +79,15 @@ const Detection = () => {
           <div {...getRootProps()}>
             <input {...getInputProps()} />
             {isDragActive ? (
-              <p>Drop the picture here ...</p>
+              <p>Drop the pictures here ...</p>
             ) : (
-              <p>Drag and drop a picture here, or click to select a picture</p>
+              <p>Drag and drop pictures here, or click to select pictures</p>
             )}
-            {imageUrl && (
-              <div>
-                <img src={imageUrl} alt="Uploaded picture" />
+            {imageUrls.map((url, index) => (
+              <div key={index}>
+                <img src={url} alt={`Uploaded picture ${index + 1}`} />
               </div>
-            )}
+            ))}
           </div>
         </Box>
       </Box>
