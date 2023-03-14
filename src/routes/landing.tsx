@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PageContainer from '../components/containers/PageContainer'
 import { useHistory } from 'react-router-dom';
 
-import {Button} from '@mui/material'
+import {Button, Container} from '@mui/material'
 
 
 const Landing = () =>{
@@ -17,7 +17,7 @@ const Landing = () =>{
     }
     return (
         <div >
-            <PageContainer>
+            <Container>
                 <div className='info-padding'>
                     <h1>
                     Glaucoma Checker
@@ -33,7 +33,7 @@ const Landing = () =>{
                     Start
                 </Button>
                 
-            </PageContainer>
+            </Container>
 
         </div>
         

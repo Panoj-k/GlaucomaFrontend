@@ -17,8 +17,9 @@ function App() {
   return (
 
     <Router>
-      <HeaderBar />
+      
       <div>
+        <HeaderBar />
         <Switch>
           <Route path="/detection">
             <Detection />
