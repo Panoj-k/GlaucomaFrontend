@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import PageContainer from "../components/containers/PageContainer";
 import { useDropzone } from "react-dropzone";
 import Stepper from "@mui/material/Stepper";
@@ -65,6 +65,11 @@ const Detection = () => {
     newImages.splice(index, 1);
     setImages(newImages);
   };
+
+  useEffect(() => {
+    if (images.length === 0 && step === 1) setIsImageEmpty(true);
+    else setIsImageEmpty(false);
+  }, [images]);
 
   const handleCheck = () => {
     setStep(2);
@@ -173,10 +178,17 @@ const Detection = () => {
         </Box>
       </Box>
       <Box textAlign={"center"} sx={{ marginBottom: 2 }}>
-        <Button variant="contained" disabled={isImageEmpty}>
-          Check
-        </Button>
-        <p>{isImageEmpty && <h6>testtest </h6>}</p>
+        {step > 0 && (
+          <Button
+            variant="contained"
+            disabled={isImageEmpty}
+            onClick={handleCheck}
+          >
+            Check
+          </Button>
+        )}
+
+        <p>{isImageEmpty && <h6>Please upload picture to process </h6>}</p>
       </Box>
     </Container>
   );
