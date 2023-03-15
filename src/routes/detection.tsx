@@ -17,13 +17,12 @@ interface Image {
   name: string;
 }
 
-const { t } = useTranslation();
-
 const Detection = () => {
   const [step, setStep] = useState(0);
   const [isImageEmpty, setIsImageEmpty] = useState(false);
 
   const steps = ["Upload", "Review", "Result"];
+  const { t } = useTranslation();
 
   //---picture drop
   const [images, setImages] = useState<Image[]>([]);
