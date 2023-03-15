@@ -7,13 +7,22 @@ import StepLabel from "@mui/material/StepLabel";
 import { Box, Container, Button } from "@mui/material";
 import { color } from "@mui/system";
 
+interface Props {
+  buttonText?: string;
+}
+
+interface Image {
+  url: string;
+  name: string;
+}
+
 const Detection = () => {
   const [step, setStep] = useState(0);
   const [isImageEmpty, setIsImageEmpty] = useState(false);
 
   const steps = ["Upload", "Review", "Result"];
   //---picture drop
-
+  const [images, setImages] = useState<Image[]>([]);
   const [imageUrls, setImageUrls] = useState<string[]>([]);
 
   const onDrop = useCallback(
@@ -21,9 +30,13 @@ const Detection = () => {
       const readers = acceptedFiles.map((file) => {
         const reader = new FileReader();
 
-        return new Promise<string>((resolve, reject) => {
+        return new Promise<Image>((resolve, reject) => {
           reader.onload = () => {
-            resolve(reader.result as string);
+            const image = {
+              url: reader.result as string,
+              name: file.name,
+            };
+            resolve(image);
           };
           reader.onerror = reject;
           reader.readAsDataURL(file);
@@ -31,13 +44,18 @@ const Detection = () => {
       });
 
       Promise.all(readers)
-        .then((urls) => setImageUrls([...imageUrls, ...urls]))
+        .then((newImages) => setImages([...images, ...newImages]))
         .catch((error) => console.error(error));
-      setStep(1);
     },
-    [imageUrls]
+    [images]
   );
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  const handleImageNameChange = (index: number, newName: string) => {
+    const newImages = [...images];
+    newImages[index].name = newName;
+    setImages(newImages);
+  };
 
   const handleCheck = () => {
     setStep(2);
@@ -93,20 +111,27 @@ const Detection = () => {
                 </Button>
               </p>
             )}
-            {imageUrls.length > 0 && (
-              <div style={{ display: "flex", flexWrap: "wrap" }}>
-                {imageUrls.map((url, index) => (
-                  <div key={index} style={{ width: "30%", padding: 5 }}>
-                    <img
-                      src={url}
-                      alt={`Uploaded picture ${index + 1}`}
-                      style={{ width: "100%", height: "auto" }}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
+          {images.length > 0 && (
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {images.map((image, index) => (
+                <div key={index} style={{ width: "30%", padding: 5 }}>
+                  <img
+                    src={image.url}
+                    alt={`Uploaded picture ${index + 1}`}
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                  <input
+                    type="text"
+                    value={image.name}
+                    onChange={(e) =>
+                      handleImageNameChange(index, e.target.value)
+                    }
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </Box>
       </Box>
       <Box textAlign={"center"} sx={{ marginBottom: 2 }}>
