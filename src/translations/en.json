@@ -1,4 +1,7 @@
-{"langing": {
-    "Glaucoma Checker":"Glaucoma Checker",
-    "Start": "Start"
-}}
+{
+    "currentLanguage":"ภาษาไทย",
+    "langing": {
+        "Glaucoma Checker":"Glaucoma Checker",
+        "Start": "Start"
+    }
+}
