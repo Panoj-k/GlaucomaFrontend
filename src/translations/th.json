@@ -1,4 +1,9 @@
-{"langing": {
-    "Glaucoma Checker":"Glaucoma Checkerชื่อไทย",
-    "Start": "เริ่มต้น"
-}}
+{
+    "currentLanguage":"ภาษาไทย",
+    "langing": {
+        "Glaucoma Checker":"Glaucoma Checker ไทย",
+        "Start": "เริ่มต้น"
+    }
+    
+}
+

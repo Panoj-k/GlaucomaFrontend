@@ -44,6 +44,7 @@ export default function MenuAppBar() {
       }
     });
   }, []);
+
   const history = useHistory();
   const handleHomeClick = () => {
     history.push("/");
@@ -86,7 +87,7 @@ export default function MenuAppBar() {
                   color="secondary"
                   id="authentication-button"
                 >
-                  language
+                  {t("currentLanguage")}
                 </Button>
                 <Menu
                   id="basic-menu"
