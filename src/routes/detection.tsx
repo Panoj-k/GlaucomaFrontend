@@ -6,6 +6,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import { Box, Container, Button } from "@mui/material";
 import { color } from "@mui/system";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   buttonText?: string;
@@ -15,6 +16,8 @@ interface Image {
   url: string;
   name: string;
 }
+
+const { t } = useTranslation();
 
 const Detection = () => {
   const [step, setStep] = useState(0);
