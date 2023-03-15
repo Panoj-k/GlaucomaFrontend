@@ -21,6 +21,7 @@ const Detection = () => {
   const [isImageEmpty, setIsImageEmpty] = useState(false);
 
   const steps = ["Upload", "Review", "Result"];
+
   //---picture drop
   const [images, setImages] = useState<Image[]>([]);
   const [imageUrls, setImageUrls] = useState<string[]>([]);
@@ -43,6 +44,8 @@ const Detection = () => {
         });
       });
 
+      setStep(1);
+
       Promise.all(readers)
         .then((newImages) => setImages([...images, ...newImages]))
         .catch((error) => console.error(error));
@@ -54,6 +57,12 @@ const Detection = () => {
   const handleImageNameChange = (index: number, newName: string) => {
     const newImages = [...images];
     newImages[index].name = newName;
+    setImages(newImages);
+  };
+
+  const handleImageDelete = (index: number) => {
+    const newImages = [...images];
+    newImages.splice(index, 1);
     setImages(newImages);
   };
 
@@ -103,7 +112,7 @@ const Detection = () => {
               <p>Drop the pictures here ...</p>
             ) : (
               <p>
-                Drag and drop pictures here, or click select pictures pictures
+                Drag and drop pictures here, or click select pictures
                 <br />
                 <br />
                 <Button variant="contained" sx={{ alignSelf: "center" }}>
@@ -115,7 +124,18 @@ const Detection = () => {
           {images.length > 0 && (
             <div style={{ display: "flex", flexWrap: "wrap" }}>
               {images.map((image, index) => (
-                <div key={index} style={{ width: "30%", padding: 5 }}>
+                <div
+                  key={index}
+                  style={{ width: "30%", padding: 5, position: "relative" }}
+                  onMouseEnter={(e) =>
+                    ((e.currentTarget.lastChild as HTMLElement).style.display =
+                      "block")
+                  }
+                  onMouseLeave={(e) =>
+                    ((e.currentTarget.lastChild as HTMLElement).style.display =
+                      "none")
+                  }
+                >
                   <img
                     src={image.url}
                     alt={`Uploaded picture ${index + 1}`}
@@ -128,6 +148,24 @@ const Detection = () => {
                       handleImageNameChange(index, e.target.value)
                     }
                   />
+                  <button
+                    style={{
+                      position: "absolute",
+                      top: 8,
+                      right: 8,
+                      display: "none",
+                      backgroundColor: "red",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "50%",
+                      width: 40,
+                      height: 40,
+                      cursor: "pointer",
+                    }}
+                    onClick={() => handleImageDelete(index)}
+                  >
+                    X
+                  </button>
                 </div>
               ))}
             </div>
