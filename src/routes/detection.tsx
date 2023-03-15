@@ -9,6 +9,7 @@ import { color } from "@mui/system";
 
 const Detection = () => {
   const [step, setStep] = useState(0);
+  const [isImageEmpty, setIsImageEmpty] = useState(false);
 
   const steps = ["Upload", "Review", "Result"];
   //---picture drop
@@ -37,6 +38,11 @@ const Detection = () => {
     [imageUrls]
   );
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  const handleCheck = () => {
+    setStep(2);
+    // send images to check
+  };
 
   return (
     <Container>
@@ -69,27 +75,45 @@ const Detection = () => {
           borderRadius: 2,
           p: 2,
           minWidth: 300,
-          marginTop: 4,
+          margin: 4,
         }}
       >
-        <Button variant="contained" sx={{ alignSelf: "center" }}>
-          Select Pictures
-        </Button>
         <Box>
           <div {...getRootProps()}>
             <input {...getInputProps()} />
             {isDragActive ? (
               <p>Drop the pictures here ...</p>
             ) : (
-              <p>Drag and drop pictures here, or click to select pictures</p>
+              <p>
+                Drag and drop pictures here, or click select pictures pictures
+                <br />
+                <br />
+                <Button variant="contained" sx={{ alignSelf: "center" }}>
+                  Select Pictures
+                </Button>
+              </p>
             )}
-            {imageUrls.map((url, index) => (
-              <div key={index}>
-                <img src={url} alt={`Uploaded picture ${index + 1}`} />
+            {imageUrls.length > 0 && (
+              <div style={{ display: "flex", flexWrap: "wrap" }}>
+                {imageUrls.map((url, index) => (
+                  <div key={index} style={{ width: "30%", padding: 5 }}>
+                    <img
+                      src={url}
+                      alt={`Uploaded picture ${index + 1}`}
+                      style={{ width: "100%", height: "auto" }}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
         </Box>
+      </Box>
+      <Box textAlign={"center"} sx={{ marginBottom: 2 }}>
+        <Button variant="contained" disabled={isImageEmpty}>
+          Check
+        </Button>
+        <p>{isImageEmpty && <h6>testtest </h6>}</p>
       </Box>
     </Container>
   );
