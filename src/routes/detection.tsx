@@ -27,7 +27,6 @@ const Detection = () => {
 
   //---picture drop
   const [images, setImages] = useState<Image[]>([]);
-  const [imageUrls, setImageUrls] = useState<string[]>([]);
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
@@ -121,18 +120,13 @@ const Detection = () => {
           </h6>
         )}
       </div>
-      <Box
-        textAlign={"center"}
-        sx={{
-          bgcolor: "background.paper",
-          boxShadow: 1,
-          borderRadius: 2,
-          p: 2,
-          minWidth: 300,
-          margin: 4,
-        }}
-      >
-        <Box>
+      <Box>
+        <Box
+          textAlign={"center"}
+          sx={{
+            minWidth: 300,
+          }}
+        >
           {step === 0 && (
             <div {...getRootProps()}>
               <input {...getInputProps()} />
@@ -161,9 +155,27 @@ const Detection = () => {
               </Button>
             </div>
           )}
-
+        </Box>
+        <Box
+          textAlign={"center"}
+          sx={{
+            bgcolor: "background.paper",
+            boxShadow: 1,
+            borderRadius: 2,
+            p: 2,
+            minWidth: 300,
+            marginBottom: 2,
+          }}
+        >
           {images.length > 0 && (
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                overflowY: "scroll",
+                maxHeight: "300px",
+              }}
+            >
               {images.map((image, index) => (
                 <div
                   key={index}
