@@ -8,6 +8,7 @@ import { Box, Container, Button } from "@mui/material";
 import { color } from "@mui/system";
 import { useTranslation } from "react-i18next";
 import { Margin } from "@mui/icons-material";
+import { useHistory } from "react-router-dom";
 
 interface Props {
   buttonText?: string;
@@ -73,8 +74,10 @@ const Detection = () => {
     else setIsImageEmpty(false);
   }, [images]);
 
+  const history = useHistory();
   const handleCheck = () => {
     setStep(2);
+    history.push("/result");
     // send images to check
   };
 
