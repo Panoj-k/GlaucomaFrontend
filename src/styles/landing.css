@@ -1,4 +1,11 @@
 .info-padding{
-    position: relative;
-    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.information{
+    flex-grow: 2;
+}
+.decoration-picture{
+    flex-grow: 1;
 }
