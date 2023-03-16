@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import PageContainer from "../components/containers/PageContainer";
 import { useHistory } from "react-router-dom";
 
-import { Button, Container } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import DecoImg from "../assets/DecoImg.svg";
 
 const Landing = () => {
   const [language, setLanguage] = useState("English");
@@ -19,18 +20,25 @@ const Landing = () => {
   return (
     <div>
       <Container>
+        <h1>{t("langing.Glaucoma Checker")}</h1>
         <div className="info-padding">
-          <h1>{t("langing.Glaucoma Checker")}</h1>
+          <div className="information">
+            <p>lorem ipsum</p>
+            <p>Getting start by uploading fundus images</p>
+            <Button
+              variant="contained"
+              disableElevation
+              onClick={handleGettingStart}
+              color="primary"
+              id="getting-start-button"
+            >
+              {t("langing.Start")}
+            </Button>
+          </div>
+          <div className="decoration-picture">
+            <img src={DecoImg} alt="Decoration Picture" />
+          </div>
         </div>
-        <Button
-          variant="contained"
-          disableElevation
-          onClick={handleGettingStart}
-          color="primary"
-          id="getting-start-button"
-        >
-          {t("langing.Start")}
-        </Button>
       </Container>
     </div>
   );
