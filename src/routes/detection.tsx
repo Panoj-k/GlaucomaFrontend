@@ -7,6 +7,7 @@ import StepLabel from "@mui/material/StepLabel";
 import { Box, Container, Button } from "@mui/material";
 import { color } from "@mui/system";
 import { useTranslation } from "react-i18next";
+import { Margin } from "@mui/icons-material";
 
 interface Props {
   buttonText?: string;
@@ -95,12 +96,31 @@ const Detection = () => {
           ))}
         </Stepper>
       </Box>
-      <h6>
-        Upload step: Please drag and drop pictures in the box below or click
-        select pictures button to add pictures.
-        <br />
-        Accepted File Types: .jpg, .png, .tif. Maximum picture at 20.
-      </h6>
+      <div>
+        {step === 0 && (
+          <h6>
+            Upload step:
+            <br />
+            Please drag and drop pictures in the box below or click select
+            pictures button to add pictures.
+            <br />
+            Accepted File Types: .jpg, .png, .tif. Maximum picture at 20.
+          </h6>
+        )}
+        {step === 1 && (
+          <h6>
+            Review step:
+            <br />
+            Please check the correctness of the pictures. You can edit the
+            picture name in the box below each picture. Click the delete button
+            on the top right of the picture to remove.
+            <br />
+            To add more picture click add picture button. Maximum picture at 20
+            <br />
+            Click check button to start detection
+          </h6>
+        )}
+      </div>
       <Box
         textAlign={"center"}
         sx={{
@@ -113,21 +133,35 @@ const Detection = () => {
         }}
       >
         <Box>
-          <div {...getRootProps()}>
-            <input {...getInputProps()} />
-            {isDragActive ? (
-              <p>Drop the pictures here ...</p>
-            ) : (
-              <p>
-                Drag and drop pictures here, or click select pictures
-                <br />
-                <br />
-                <Button variant="contained" sx={{ alignSelf: "center" }}>
-                  Select Pictures
-                </Button>
-              </p>
-            )}
-          </div>
+          {step === 0 && (
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+              {isDragActive ? (
+                <p>Drop the pictures here ...</p>
+              ) : (
+                <p>
+                  Drag and drop pictures here, or click select pictures
+                  <br />
+                  <br />
+                  <Button variant="contained" sx={{ alignSelf: "center" }}>
+                    Select Pictures
+                  </Button>
+                </p>
+              )}
+            </div>
+          )}
+          {step === 1 && (
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+              <Button
+                variant="contained"
+                sx={{ alignSelf: "center", marginBottom: 2 }}
+              >
+                Add Pictures
+              </Button>
+            </div>
+          )}
+
           {images.length > 0 && (
             <div style={{ display: "flex", flexWrap: "wrap" }}>
               {images.map((image, index) => (
