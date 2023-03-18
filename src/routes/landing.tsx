@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PageContainer from "../components/containers/PageContainer";
 import { useHistory } from "react-router-dom";
 
@@ -11,7 +11,9 @@ const Landing = () => {
   const [language, setLanguage] = useState("English");
   const { t } = useTranslation();
   const { images, setImages } = useContext(ImageContext);
-  setImages([]);
+  useEffect(() => {
+    setImages([]);
+  }, []);
 
   const handleLanguageChange = () => {
     setLanguage(language === "English" ? "Thai" : "English");
