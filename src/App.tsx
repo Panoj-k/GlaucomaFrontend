@@ -8,24 +8,27 @@ import HeaderBar from "./components/header/HeaderBar";
 import Landing from "./routes/landing";
 import Detection from "./routes/detection";
 import Result from "./routes/result";
+import ImageContextProvider from "./context/imageContext";
 
 function App() {
   return (
     <Router>
-      <div>
-        <HeaderBar />
-        <Switch>
-          <Route path="/detection">
-            <Detection />
-          </Route>
-          <Route path="/result">
-            <Result />
-          </Route>
-          <Route path="/">
-            <Landing />
-          </Route>
-        </Switch>
-      </div>
+      <ImageContextProvider>
+        <div>
+          <HeaderBar />
+          <Switch>
+            <Route path="/detection">
+              <Detection />
+            </Route>
+            <Route path="/result">
+              <Result />
+            </Route>
+            <Route path="/">
+              <Landing />
+            </Route>
+          </Switch>
+        </div>
+      </ImageContextProvider>
     </Router>
   );
 }
