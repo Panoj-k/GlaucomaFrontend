@@ -13,6 +13,11 @@ import { useHistory } from "react-router-dom";
 const Result = () => {
   const steps = ["Upload", "Review", "Result"];
   const { t } = useTranslation();
+  const history = useHistory();
+
+  const handleCheckMore = () => {
+    history.push("/detection");
+  };
 
   return (
     <Container>
@@ -29,6 +34,24 @@ const Result = () => {
             </Step>
           ))}
         </Stepper>
+      </Box>
+      <Box
+        textAlign={"center"}
+        sx={{
+          bgcolor: "background.paper",
+          boxShadow: 1,
+          borderRadius: 2,
+          p: 2,
+          minWidth: 300,
+          margin: 2,
+        }}
+      >
+        <div>pictures</div>
+      </Box>
+      <Box textAlign={"center"} sx={{ marginBottom: 2 }}>
+        <Button variant="contained" onClick={handleCheckMore}>
+          Check new pictures
+        </Button>
       </Box>
     </Container>
   );
