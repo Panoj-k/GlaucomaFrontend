@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PageContainer from "../components/containers/PageContainer";
 import { useHistory } from "react-router-dom";
 
 import { Box, Button, Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { ImageContext } from "../context/imageContext";
 import DecoImg from "../assets/DecoImg.svg";
 
 const Landing = () => {
   const [language, setLanguage] = useState("English");
   const { t } = useTranslation();
+  const { images, setImages } = useContext(ImageContext);
+  setImages([]);
 
   const handleLanguageChange = () => {
     setLanguage(language === "English" ? "Thai" : "English");

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useContext } from "react";
 import PageContainer from "../components/containers/PageContainer";
 import { useDropzone } from "react-dropzone";
 import Stepper from "@mui/material/Stepper";
@@ -9,13 +9,22 @@ import { color } from "@mui/system";
 import { useTranslation } from "react-i18next";
 import { Margin } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
+import { ImageContext } from "../context/imageContext";
 
 const Result = () => {
   const steps = ["Upload", "Review", "Result"];
   const { t } = useTranslation();
   const history = useHistory();
 
+  const { images, setImages } = useContext(ImageContext);
+
+  interface Image {
+    url: string;
+    name: string;
+  }
+
   const handleCheckMore = () => {
+    setImages([]);
     history.push("/detection");
   };
 
@@ -46,7 +55,31 @@ const Result = () => {
           margin: 2,
         }}
       >
-        <div>pictures</div>
+        {images.length > 0 && (
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              overflowY: "scroll",
+              minHeight: "300px",
+              maxHeight: "600px",
+            }}
+          >
+            {images.map((image, index) => (
+              <div
+                key={index}
+                style={{ width: "30%", padding: 5, position: "relative" }}
+              >
+                <img
+                  src={image.url}
+                  alt={`Uploaded picture ${index + 1}`}
+                  style={{ width: "100%", height: "auto" }}
+                />
+                <p> {image.name}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </Box>
       <Box textAlign={"center"} sx={{ marginBottom: 2 }}>
         <Button variant="contained" onClick={handleCheckMore}>
