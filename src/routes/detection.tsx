@@ -10,11 +10,7 @@ import { useTranslation } from "react-i18next";
 import { Margin } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { ImageContext } from "../context/imageContext";
-
-interface Image {
-  url: string;
-  name: string;
-}
+import Image from "../interface/imageInterface";
 
 const Detection = () => {
   const [step, setStep] = useState(0);

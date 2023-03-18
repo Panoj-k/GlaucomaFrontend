@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { Margin } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { ImageContext } from "../context/imageContext";
+import Image from "../interface/imageInterface";
 
 const Result = () => {
   const steps = ["Upload", "Review", "Result"];
