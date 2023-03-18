@@ -18,11 +18,6 @@ const Result = () => {
 
   const { images, setImages } = useContext(ImageContext);
 
-  interface Image {
-    url: string;
-    name: string;
-  }
-
   const handleCheckMore = () => {
     setImages([]);
     history.push("/detection");
@@ -76,6 +71,8 @@ const Result = () => {
                   style={{ width: "100%", height: "auto" }}
                 />
                 <p> {image.name}</p>
+                <p> probability </p>
+                <p> result</p>
               </div>
             ))}
           </div>
