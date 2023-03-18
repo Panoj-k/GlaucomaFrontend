@@ -84,7 +84,7 @@ const Detection = () => {
   return (
     <Container>
       {/* <PageContainer> */}
-      <h2>Detection page</h2>
+      <h2>Detection tool</h2>
       <Box sx={{ display: "grid", placeItems: "center" }}>
         <Stepper
           activeStep={step}
