@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import { loadLayersModel } from "@tensorflow/tfjs-layers";
-import Image from "../context/imageContext";
+import Image from "../interface/imageInterface";
 
 async function loadModel() {
   const model = await loadLayersModel("model.h5");
   return model;
-}
-
-interface Image {
-  url: string;
-  name: string;
 }
 
 const PredictionModel = (images: Image) => {
