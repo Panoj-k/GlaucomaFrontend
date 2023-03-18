@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useContext } from "react";
 import PageContainer from "../components/containers/PageContainer";
 import { useDropzone } from "react-dropzone";
 import Stepper from "@mui/material/Stepper";
@@ -9,6 +9,7 @@ import { color } from "@mui/system";
 import { useTranslation } from "react-i18next";
 import { Margin } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
+import { ImageContext } from "../context/imageContext";
 
 interface Image {
   url: string;
@@ -23,7 +24,7 @@ const Detection = () => {
   const { t } = useTranslation();
 
   //---picture drop
-  const [images, setImages] = useState<Image[]>([]);
+  const { images, setImages } = useContext(ImageContext);
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
