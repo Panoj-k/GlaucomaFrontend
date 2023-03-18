@@ -4,7 +4,7 @@ import { loadLayersModel } from "@tensorflow/tfjs-layers";
 import Image from "../interface/imageInterface";
 
 async function loadModel() {
-  const model = await loadLayersModel("model.h5");
+  const model = await loadLayersModel("modelDraft1.h5");
   return model;
 }
 
