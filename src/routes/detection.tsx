@@ -10,10 +10,6 @@ import { useTranslation } from "react-i18next";
 import { Margin } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 
-interface Props {
-  buttonText?: string;
-}
-
 interface Image {
   url: string;
   name: string;
@@ -83,7 +79,6 @@ const Detection = () => {
 
   return (
     <Container>
-      {/* <PageContainer> */}
       <h2>Detection tool</h2>
       <Box sx={{ display: "grid", placeItems: "center" }}>
         <Stepper
