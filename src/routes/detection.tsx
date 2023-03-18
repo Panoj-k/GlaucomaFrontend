@@ -68,6 +68,10 @@ const Detection = () => {
   }, [images]);
 
   const history = useHistory();
+
+  const getPrediction = () => {
+    console.log("getting prediction...");
+  };
   const handleCheck = () => {
     setStep(2);
     history.push("/result");
