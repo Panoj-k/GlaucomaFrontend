@@ -33,6 +33,7 @@ const Detection = () => {
             const image = {
               url: reader.result as string,
               name: file.name,
+              result: "undef",
             };
             resolve(image);
           };
@@ -72,10 +73,12 @@ const Detection = () => {
 
   const getPrediction = () => {
     console.log("getting prediction...");
+    const result = PredictionModel(images);
+    return result;
   };
   const handleCheck = () => {
     setStep(2);
-    const result = PredictionModel(images);
+    const result = getPrediction();
     console.log("result is: ", result);
     history.push("/result");
     // send images to check

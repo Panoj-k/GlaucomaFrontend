@@ -9,11 +9,6 @@ import React, {
 
 export const AppContext = createContext(null);
 
-// export interface Image {
-//   url: string;
-//   name: string;
-// }
-
 export interface ImageContextStruct {
   images: Image[];
   setImages: Dispatch<SetStateAction<Image[]>>;
