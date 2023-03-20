@@ -1,4 +1,4 @@
-import Image from "../interface/imageInterface";
+import { ImageInterface } from "../interface/imageInterface";
 
 import React, {
   useState,
@@ -10,14 +10,14 @@ import React, {
 export const AppContext = createContext(null);
 
 export interface ImageContextStruct {
-  images: Image[];
-  setImages: Dispatch<SetStateAction<Image[]>>;
+  images: ImageInterface[];
+  setImages: Dispatch<SetStateAction<ImageInterface[]>>;
 }
 
 export const ImageContext = createContext({} as ImageContextStruct);
 
 const ImageContextProvider = ({ ...props }) => {
-  const [images, setImages] = useState<Image[]>([]);
+  const [images, setImages] = useState<ImageInterface[]>([]);
   const value = { images, setImages };
 
   return <ImageContext.Provider value={value} {...props} />;
