@@ -1,16 +1,51 @@
 import React, { useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import { loadLayersModel } from "@tensorflow/tfjs-layers";
-import Image from "../interface/imageInterface";
+import { ImageInterface } from "../interface/imageInterface";
 
 async function loadModel() {
   const model = await loadLayersModel("modelDraft1.h5");
   return model;
 }
 
-const PredictionModel = (images: Image[]) => {
+const PredictionModel = (images: ImageInterface[]) => {
   const inputList = [1, 2];
-  for (let i = 0; i < images.length; i++) console.log(images[i].url);
+  const [imageList, setImageList] = useState([]);
+
+  const resizeImage = (imageUrl: string) => {
+    const image = new Image();
+    image.src = imageUrl;
+    const canvas = document.createElement("canvas");
+    const MAX_WIDTH = 224;
+    const MAX_HEIGHT = 224;
+    let width = image.width;
+    let height = image.height;
+    if (width > height) {
+      if (width > MAX_WIDTH) {
+        height *= MAX_WIDTH / width;
+        width = MAX_WIDTH;
+      }
+    } else {
+      if (height > MAX_HEIGHT) {
+        width *= MAX_HEIGHT / height;
+        height = MAX_HEIGHT;
+      }
+    }
+
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+
+    if (ctx) ctx.drawImage(image, 0, 0, width, height);
+    return console.log("resizing image");
+  };
+
+  //loop
+  for (let i = 0; i < images.length; i++) {
+    //console.log(images[i].name);
+    resizeImage(images[i].url);
+    console.log(images[i].result);
+  }
   // inputList =
   //   const [inputValue, setInputValue] = useState<number>(0);
   // const [outputValue, setOutputValue] = useState<number | null>(null);

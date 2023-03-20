@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { Margin } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { ImageContext } from "../context/imageContext";
-import Image from "../interface/imageInterface";
+import { ImageInterface } from "../interface/imageInterface";
 import PredictionModel from "../model/PredictionModel";
 
 const Detection = () => {
@@ -28,7 +28,7 @@ const Detection = () => {
       const readers = acceptedFiles.map((file) => {
         const reader = new FileReader();
 
-        return new Promise<Image>((resolve, reject) => {
+        return new Promise<ImageInterface>((resolve, reject) => {
           reader.onload = () => {
             const image = {
               url: reader.result as string,
