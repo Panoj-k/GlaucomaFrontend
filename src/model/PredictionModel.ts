@@ -11,7 +11,7 @@ import cv, { Mat, Rect } from "opencv-ts";
 export async function loadModel() {
     // const model = await loadLayersModel(window.origin + "/model_js/model.json");
     console.log("loading model...");
-    const model = await loadLayersModel("./model_js/model.json");
+    const model = await loadLayersModel("model_js/model.json");
     return model
 }
 
@@ -20,6 +20,7 @@ export async function PredictionModel(images: ImageInterface[]) {
 
     images.forEach((image, i) => {
       const imageUrl = image.url
+      console.log(imageUrl)
       const imageFile = cv.imread(imageUrl);
       const dst: Mat = new cv.Mat(imageFile.cols, imageFile.rows, cv.CV_8UC4);
       cv.cvtColor(imageFile, dst, cv.COLOR_BGR2RGB);
