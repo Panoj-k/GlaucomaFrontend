@@ -71,14 +71,14 @@ const Detection = () => {
 
   const history = useHistory();
 
-  const getPrediction = () => {
+  // const getPrediction = () => {
+  //   console.log("getting prediction...");
+  //   const result = PredictionModel(images);
+  //   return result;
+  // };
+  const handleCheck = () => {
     console.log("getting prediction...");
     const result = PredictionModel(images);
-    return result;
-  };
-  const handleCheck = () => {
-    setStep(2);
-    const result = getPrediction();
     console.log("result is: ", result);
     history.push("/result");
     // send images to check
