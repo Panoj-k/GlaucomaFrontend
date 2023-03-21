@@ -11,7 +11,7 @@ import { Margin } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { ImageContext } from "../context/imageContext";
 import { ImageInterface } from "../interface/imageInterface";
-import PredictionModel from "../model/PredictionModel";
+import { PredictionModel } from "../model/PredictionModel";
 
 const Detection = () => {
   const [step, setStep] = useState(0);
@@ -78,8 +78,7 @@ const Detection = () => {
   // };
   const handleCheck = () => {
     console.log("getting prediction...");
-    const result = PredictionModel(images);
-    console.log("result is: ", result);
+    PredictionModel(images);
     history.push("/result");
     // send images to check
   };
