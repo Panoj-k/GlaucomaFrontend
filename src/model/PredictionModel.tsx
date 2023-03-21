@@ -2,18 +2,27 @@ import React, { useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import { loadLayersModel } from "@tensorflow/tfjs-layers";
 import { ImageInterface } from "../interface/imageInterface";
-
-async function loadModel() {
-  const model = await loadLayersModel("modelDraft1.h5");
-  return model;
-}
+//import cv from "opencv.js";
+const cv = require("opencv.js");
 
 const PredictionModel = (images: ImageInterface[]) => {
+  async function loadModel() {
+    console.log("loading model...");
+    const model = await loadLayersModel(window.origin + "/model_js/model.json");
+    //const model = await loadLayersModel("model_js/model.json");
+    //const model = await loadLayersModel("file:model_js/model.json");
+    return model;
+  }
+  const [imageList, setImageList] = useState<string[]>([]);
+
+  const model = loadModel();
   const inputList = [1, 2];
-  const [imageList, setImageList] = useState([]);
+
+  console.log("prediction model is called");
 
   const resizeImage = (imageUrl: string) => {
     const image = new Image();
+    console.log("resizing image is called");
     image.src = imageUrl;
     const canvas = document.createElement("canvas");
     const MAX_WIDTH = 224;
@@ -37,13 +46,17 @@ const PredictionModel = (images: ImageInterface[]) => {
     const ctx = canvas.getContext("2d");
 
     if (ctx) ctx.drawImage(image, 0, 0, width, height);
-    return console.log("resizing image");
+    return ctx;
   };
 
   //loop
   for (let i = 0; i < images.length; i++) {
-    //console.log(images[i].name);
-    resizeImage(images[i].url);
+    console.log(images[i].name);
+    const image = resizeImage(images[i].url);
+    // model.then((model) => {
+    //   let result = model.predict(image);
+    // });
+    //let result = model.predict(inputTensor)
     console.log(images[i].result);
   }
   // inputList =
@@ -65,15 +78,7 @@ const PredictionModel = (images: ImageInterface[]) => {
   //   setOutputValue(prediction.arraySync()[0]);
   // };
 
-  return (
-    // <div>
-    //   <label htmlFor="input">Enter a number:</label>
-    //   <input type="number" id="input" onChange={handleInputChange} />
-    //   <button onClick={handleButtonClick}>Predict</button>
-    //   {outputValue && <p>The predicted value is: {outputValue}</p>}
-    // </div>
-    { inputList }
-  );
+  return { inputList };
 };
 
 export default PredictionModel;
