@@ -20,7 +20,7 @@ export async function PredictionModel(images: ImageInterface[]) {
 
     images.forEach((image, i) => {
       const imageUrl = image.url
-      console.log(imageUrl)
+      //console.log(imageUrl)
       const imageFile = cv.imread(imageUrl);
       const dst: Mat = new cv.Mat(imageFile.cols, imageFile.rows, cv.CV_8UC4);
       cv.cvtColor(imageFile, dst, cv.COLOR_BGR2RGB);
