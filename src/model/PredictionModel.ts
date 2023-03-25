@@ -18,18 +18,18 @@ export async function loadModel() {
 export async function PredictionModel(images: ImageInterface[]) {
   const model = await loadModel()
 
-    images.forEach((image, i) => {
-      const imageUrl = image.url
-      //console.log(imageUrl)
-      const imageFile = cv.imread(imageUrl);
-      const dst: Mat = new cv.Mat(imageFile.cols, imageFile.rows, cv.CV_8UC4);
-      cv.cvtColor(imageFile, dst, cv.COLOR_BGR2RGB);
-      cv.resize(imageFile, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
-      cv.normalize(imageFile, dst, 0, 255, cv.NORM_MINMAX);
-      const tensor = tf.tensor(imageFile.data, [imageFile.rows, imageFile.cols, -1])
-      const prediction = model.predict(tensor)
-      console.log(prediction)
-    })
+  images.forEach((image, i) => {
+    const imageUrl = image.url
+    //console.log(imageUrl)
+    const imageFile = cv.imread(imageUrl);
+    const dst: Mat = new cv.Mat(imageFile.cols, imageFile.rows, cv.CV_8UC4);
+    cv.cvtColor(imageFile, dst, cv.COLOR_BGR2RGB);
+    cv.resize(imageFile, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
+    cv.normalize(imageFile, dst, 0, 255, cv.NORM_MINMAX);
+    const tensor = tf.tensor(imageFile.data, [imageFile.rows, imageFile.cols, -1])
+    const prediction = model.predict(tensor)
+    console.log(prediction)
+  })
 
   
   

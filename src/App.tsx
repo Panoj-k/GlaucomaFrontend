@@ -9,26 +9,41 @@ import Landing from "./routes/landing";
 import Detection from "./routes/detection";
 import Result from "./routes/result";
 import ImageContextProvider from "./context/imageContext";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#39dbbb",
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: "#E36647",
+      contrastText: "#fff",
+    },
+  },
+});
 
 function App() {
   return (
     <Router>
-      <ImageContextProvider>
-        <div>
-          <HeaderBar />
-          <Switch>
-            <Route path="/detection">
-              <Detection />
-            </Route>
-            <Route path="/result">
-              <Result />
-            </Route>
-            <Route path="/">
-              <Landing />
-            </Route>
-          </Switch>
-        </div>
-      </ImageContextProvider>
+      <ThemeProvider theme={theme}>
+        <ImageContextProvider>
+          <div>
+            <HeaderBar />
+            <Switch>
+              <Route path="/detection">
+                <Detection />
+              </Route>
+              <Route path="/result">
+                <Result />
+              </Route>
+              <Route path="/">
+                <Landing />
+              </Route>
+            </Switch>
+          </div>
+        </ImageContextProvider>
+      </ThemeProvider>
     </Router>
   );
 }
