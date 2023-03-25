@@ -1,4 +1,10 @@
-import React, { useState, useCallback, useEffect, useContext } from "react";
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useContext,
+  useRef,
+} from "react";
 import PageContainer from "../components/containers/PageContainer";
 import { useDropzone } from "react-dropzone";
 import Stepper from "@mui/material/Stepper";
@@ -76,6 +82,7 @@ const Detection = () => {
   //   const result = PredictionModel(images);
   //   return result;
   // };
+
   const handleCheck = () => {
     console.log("getting prediction...");
     PredictionModel(images);
@@ -194,6 +201,7 @@ const Detection = () => {
                   }
                 >
                   <img
+                    id={`glaucomaImage${index}`}
                     src={image.url}
                     alt={`Uploaded picture ${index + 1}`}
                     style={{ width: "100%", height: "auto" }}
