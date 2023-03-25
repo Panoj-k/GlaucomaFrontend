@@ -54,13 +54,17 @@ export default function MenuAppBar() {
   return (
     <>
       <Box sx={{ flexGrow: 1, marginBottom: 10 }}>
-        <AppBar className="MuiToolbar-center" elevation={elevation}>
+        <AppBar
+          className="MuiToolbar-center"
+          elevation={elevation}
+          color="primary"
+        >
           <Container maxWidth="lg">
             <Toolbar>
               <IconButton
                 size="large"
                 edge="start"
-                color="inherit"
+                color="primary"
                 aria-label="home"
                 sx={{ mr: 2 }}
                 onClick={handleHomeClick}
