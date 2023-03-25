@@ -66,6 +66,7 @@ const Result = () => {
                 style={{ width: "30%", padding: 5, position: "relative" }}
               >
                 <img
+                  id={`glaucomaImage${index}`}
                   src={image.url}
                   alt={`Uploaded picture ${index + 1}`}
                   style={{ width: "100%", height: "auto" }}

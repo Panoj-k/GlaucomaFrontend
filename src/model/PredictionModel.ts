@@ -1,10 +1,6 @@
 import { ImageInterface } from './../interface/imageInterface';
-// import React, { useEffect, useState } from "react";
 import * as tf from "@tensorflow/tfjs";
 import { loadLayersModel } from "@tensorflow/tfjs-layers";
-// import { ImageInterface } from "../interface/imageInterface";
-// //import * as cv from "opencv.js";
-// // const cv = require("opencv.js");
 import cv, { Mat, Rect } from "opencv-ts";
 // import { LayersModel } from "@tensorflow/tfjs";
 
@@ -12,27 +8,44 @@ export async function loadModel() {
     // const model = await loadLayersModel(window.origin + "/model_js/model.json");
     console.log("loading model...");
     const model = await loadLayersModel("model_js/model.json");
+    console.log('model is loaded')
     return model
 }
+
+
 
 export async function PredictionModel(images: ImageInterface[]) {
   const model = await loadModel()
 
   images.forEach((image, i) => {
+
     const imageUrl = image.url
-    //console.log(imageUrl)
-    const imageFile = cv.imread(imageUrl);
-    const dst: Mat = new cv.Mat(imageFile.cols, imageFile.rows, cv.CV_8UC4);
-    cv.cvtColor(imageFile, dst, cv.COLOR_BGR2RGB);
-    cv.resize(imageFile, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
-    cv.normalize(imageFile, dst, 0, 255, cv.NORM_MINMAX);
-    const tensor = tf.tensor(imageFile.data, [imageFile.rows, imageFile.cols, -1])
-    const prediction = model.predict(tensor)
-    console.log(prediction)
+    const imageElement:HTMLImageElement|null = document.getElementById(`glaucomaImage${i}`) as HTMLImageElement
+    console.log(imageElement)
+    const _imagefile = new Image
+    console.log('here')
+    _imagefile.onload = () => {
+      console.log('here3')
+      if(imageElement && imageElement.src){
+      //@ts-ignore
+      // imageElement.src = this.src
+      const imageFile = cv.imread(imageElement);  
+      const dst: Mat = new cv.Mat(imageFile.cols, imageFile.rows, cv.CV_8UC4);
+      cv.cvtColor(imageFile, dst, cv.COLOR_BGR2RGB);
+      cv.resize(imageFile, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
+      cv.normalize(imageFile, dst, 0, 255, cv.NORM_MINMAX);
+      console.log('here2')
+      console.log(dst.rows, dst.cols)
+      const tensor = tf.tensor(imageFile.data, [imageFile.rows, imageFile.cols, -1])
+      const prediction = model.predict(tensor)
+      console.log(prediction)
+      }
+    }
+    _imagefile.src = imageElement.src
+
   })
 
-  
-  
+
 }
 
 // interface P {
