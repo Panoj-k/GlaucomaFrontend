@@ -92,42 +92,49 @@ const Detection = () => {
 
   return (
     <Container>
-      <h2>Detection tool</h2>
+      <h2>{t("detection.Name")}</h2>
       <Box sx={{ display: "grid", placeItems: "center" }}>
         <Stepper
           activeStep={step}
           alternativeLabel
           sx={{ width: ["200px", "400px", "600px"] }}
         >
-          {steps.map((label) => (
+          <Step key="Upload">
+            <StepLabel>{t("detection.Step0")}</StepLabel>
+          </Step>
+          <Step key="Review">
+            <StepLabel>{t("detection.Step1")}</StepLabel>
+          </Step>
+          <Step key="Result">
+            <StepLabel>{t("detection.Step2")}</StepLabel>
+          </Step>
+
+          {/* {steps.map((label) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
             </Step>
-          ))}
+          ))} */}
         </Stepper>
       </Box>
       <div>
         {step === 0 && (
           <h6>
-            Upload step:
+            {t("detection.Upload Step")}
             <br />
-            Please drag and drop pictures in the box below or click select
-            pictures button to add pictures.
+            {t("detection.Upload Instruction")}
             <br />
-            Accepted File Types: .jpg, .png, .tif. Maximum picture at 20.
+            {t("detection.Upload Instruction2")}
           </h6>
         )}
         {step === 1 && (
           <h6>
-            Review step:
+            {t("detection.Review Step")}
             <br />
-            Please check the correctness of the pictures. You can edit the
-            picture name in the box below each picture. Click the delete button
-            on the top right of the picture to remove.
+            {t("detection.Review Instruction")}
             <br />
-            To add more picture click add picture button. Maximum picture at 20
+            {t("detection.Review Instruction2")}
             <br />
-            Click check button to start detection
+            {t("detection.Review Instruction3")}
           </h6>
         )}
       </div>
@@ -142,14 +149,14 @@ const Detection = () => {
             <div {...getRootProps()}>
               <input {...getInputProps()} />
               {isDragActive ? (
-                <p>Drop the pictures here ...</p>
+                <p>{t("detection.Drop Zone Drag")}</p>
               ) : (
                 <p>
-                  Drag and drop pictures here, or click select pictures
+                  {t("detection.Drop Zone")}
                   <br />
                   <br />
                   <Button variant="contained" sx={{ alignSelf: "center" }}>
-                    Select Pictures
+                    {t("detection.Select Picture Button")}
                   </Button>
                 </p>
               )}
@@ -162,7 +169,7 @@ const Detection = () => {
                 variant="contained"
                 sx={{ alignSelf: "center", marginBottom: 2 }}
               >
-                Add Pictures
+                {t("detection.Add Picture Button")}
               </Button>
             </div>
           )}
@@ -244,11 +251,11 @@ const Detection = () => {
             disabled={isImageEmpty}
             onClick={handleCheck}
           >
-            Check
+            {t("detection.Check Button")}
           </Button>
         )}
 
-        <p>{isImageEmpty && <h6>Please upload picture to process </h6>}</p>
+        <p>{isImageEmpty && <h6>{t("detection.Error No Picture")}</h6>}</p>
       </Box>
     </Container>
   );
