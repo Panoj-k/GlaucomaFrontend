@@ -2,6 +2,8 @@
     "currentLanguage":"ภาษาไทย",
     "langing": {
         "Glaucoma Checker":"Glaucoma Checker",
-        "Start": "Start"
+        "Start": "Start",
+        "Description": "lorem ipsum",
+        "Getting Start": "Getting start by uploading fundus images"
     }
 }
