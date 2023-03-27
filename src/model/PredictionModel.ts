@@ -2,7 +2,6 @@ import { ImageInterface } from './../interface/imageInterface';
 import * as tf from "@tensorflow/tfjs";
 import { loadLayersModel } from "@tensorflow/tfjs-layers";
 import cv, { Mat, Rect } from "opencv-ts";
-// import { LayersModel } from "@tensorflow/tfjs";
 
 export async function loadModel() {
     // const model = await loadLayersModel(window.origin + "/model_js/model.json");
@@ -16,15 +15,15 @@ export async function loadModel() {
 
 export async function PredictionModel(images: ImageInterface[]) {
   const model = await loadModel()
+  const imageList = []
 
   images.forEach((image, i) => {
-
     const imageUrl = image.url
     const imageElement:HTMLImageElement|null = document.getElementById(`glaucomaImage${i}`) as HTMLImageElement
     console.log(imageElement)
     const _imagefile = new Image
     console.log('here')
-    _imagefile.onload = () => {
+    _imagefile.onload = async () => {
       console.log('here3')
       if(imageElement && imageElement.src){
       //@ts-ignore
@@ -32,13 +31,19 @@ export async function PredictionModel(images: ImageInterface[]) {
       const imageFile = cv.imread(imageElement);  
       const dst: Mat = new cv.Mat(imageFile.cols, imageFile.rows, cv.CV_8UC4);
       cv.cvtColor(imageFile, dst, cv.COLOR_BGR2RGB);
-      cv.resize(imageFile, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
-      cv.normalize(imageFile, dst, 0, 255, cv.NORM_MINMAX);
+      cv.resize(dst, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
+      cv.normalize(dst, dst, 0, 255, cv.NORM_MINMAX);
       console.log('here2')
-      console.log(dst.rows, dst.cols)
-      const tensor = tf.tensor(imageFile.data, [imageFile.rows, imageFile.cols, -1])
-      const prediction = model.predict(tensor)
+      //console.log(dst.rows, dst.cols)
+      const input = tf.tensor(dst.data, [1,dst.rows, dst.cols, 3])
+      console.log(input)
+      const prediction = model.predict(input) as tf.Tensor
+      console.log('prediction')
       console.log(prediction)
+      const data = await prediction.data();
+      console.log('data')
+      console.log(data)
+      console.log(data[0],data[1])
       }
     }
     _imagefile.src = imageElement.src
