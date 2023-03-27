@@ -69,7 +69,7 @@ export default function MenuAppBar() {
                 sx={{ mr: 2 }}
                 onClick={handleHomeClick}
               >
-                <HomeIcon />
+                <HomeIcon sx={{ color: "#FFFFFF" }} />
               </IconButton>
               <Typography
                 variant="h6"
@@ -88,8 +88,9 @@ export default function MenuAppBar() {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleLanguageButtonClick}
-                  color="secondary"
+                  //color="secondary"
                   id="authentication-button"
+                  sx={{ color: "#FFFFFF" }}
                 >
                   {t("currentLanguage")}
                 </Button>
