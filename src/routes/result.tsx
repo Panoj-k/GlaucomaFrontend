@@ -25,18 +25,22 @@ const Result = () => {
 
   return (
     <Container>
-      <h2>Detection result</h2>
+      <h2>{t("result.Name")}</h2>
       <Box sx={{ display: "grid", placeItems: "center" }}>
         <Stepper
           activeStep={2}
           alternativeLabel
           sx={{ width: ["200px", "400px", "600px"] }}
         >
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
+          <Step key="Upload">
+            <StepLabel>{t("detection.Step0")}</StepLabel>
+          </Step>
+          <Step key="Review">
+            <StepLabel>{t("detection.Step1")}</StepLabel>
+          </Step>
+          <Step key="Result">
+            <StepLabel>{t("detection.Step2")}</StepLabel>
+          </Step>
         </Stepper>
       </Box>
       <Box
@@ -81,7 +85,7 @@ const Result = () => {
       </Box>
       <Box textAlign={"center"} sx={{ marginBottom: 2 }}>
         <Button variant="contained" onClick={handleCheckMore}>
-          Check new pictures
+          {t("result.New Picture Button")}
         </Button>
       </Box>
     </Container>

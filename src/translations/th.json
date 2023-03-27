@@ -24,6 +24,10 @@
         "Add Picture Button": "เพิ่มรูปภาพ",
         "Check Button": "ตรวจสอบ",
         "Error No Picture": "โปรดอัพโหลดรูปภาพเพื่อใช้งาน"
+    },
+    "result": {
+        "Name": "ผลการวิเคราะห์",
+        "New Picture Button": "ตรวจรูปภาพใหม่"
     }
     
 }
