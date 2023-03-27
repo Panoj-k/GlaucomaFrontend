@@ -108,12 +108,6 @@ const Detection = () => {
           <Step key="Result">
             <StepLabel>{t("detection.Step2")}</StepLabel>
           </Step>
-
-          {/* {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))} */}
         </Stepper>
       </Box>
       <div>

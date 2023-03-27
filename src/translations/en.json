@@ -24,5 +24,9 @@
         "Add Picture Button": "Add Pictures",
         "Check Button": "Check",
         "Error No Picture": "Please upload picture to process"
+    },
+    "result": {
+        "Name": "Detection result",
+        "New Picture Button": "Check new pictures"
     }
 }
