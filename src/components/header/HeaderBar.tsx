@@ -6,12 +6,12 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import HomeIcon from "@mui/icons-material/Home";
+import TranslateIcon from "@mui/icons-material/Translate";
 import { useHistory } from "react-router-dom";
 import { Language, useLanguage } from "../../translations/i18n";
 
 import { Button, Divider, Menu, MenuItem } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import i18n from "../../translations/i18n";
 
 export default function MenuAppBar() {
   const { t } = useTranslation();
@@ -75,7 +75,7 @@ export default function MenuAppBar() {
                 variant="h6"
                 component="div"
                 align="center"
-                sx={{ flexGrow: 1 }}
+                sx={{ flexGrow: 1, fontWeight: "bold" }}
               >
                 Glaucoma Detection Tool
               </Typography>
@@ -84,13 +84,13 @@ export default function MenuAppBar() {
                 <Button
                   variant="contained"
                   disableElevation
-                  aria-label="account of current user"
+                  aria-label="language-change"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleLanguageButtonClick}
-                  //color="secondary"
-                  id="authentication-button"
-                  sx={{ color: "#FFFFFF" }}
+                  color="primary"
+                  endIcon={<TranslateIcon />}
+                  sx={{ color: "#259F87", background: "#FFFFFF" }}
                 >
                   {t("currentLanguage")}
                 </Button>
