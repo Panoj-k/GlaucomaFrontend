@@ -5,5 +5,24 @@
         "Start": "Start",
         "Description": "lorem ipsum",
         "Getting Start": "Getting start by uploading fundus images"
+    },
+    "detection": {
+        "Name":"Detection Tool",
+        "Step0": "Upload",
+        "Step1": "Review",
+        "Step2": "Result",
+        "Upload Step": "Upload step",
+        "Upload Instruction": "Please drag and drop pictures in the box below or click select pictures button to add pictures.",
+        "Upload Instruction2": "Accepted File Types: .jpg, .png, .tif. Maximum picture at 20.",
+        "Review Step": "Review step",
+        "Review Instruction": "Please check the correctness of the pictures. You can edit the picture name in the box below each picture. Click the delete button on the top right of the picture to remove.",
+        "Review Instruction2": "To add more picture click add picture button. Maximum picture at 20",
+        "Review Instruction3": "Click check button to start detection",
+        "Drop Zone":"Drag and drop pictures here, or click select pictures",
+        "Drop Zone Drag": "Drop the pictures here ...",
+        "Select Picture Button": "Select Pictures",
+        "Add Picture Button": "Add Pictures",
+        "Check Button": "Check",
+        "Error No Picture": "Please upload picture to process"
     }
 }
