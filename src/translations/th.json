@@ -2,7 +2,9 @@
     "currentLanguage":"ภาษาไทย",
     "langing": {
         "Glaucoma Checker":"Glaucoma Checker ไทย",
-        "Start": "เริ่มต้น"
+        "Start": "เริ่มต้น",
+        "Description": "คำอธิบายภาษาไทย",
+        "Getting Start": "เริ่มต้นการใช้งานด้วยการอัพโหลดรูปภาพดวงตา"
     }
     
 }
