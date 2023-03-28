@@ -76,8 +76,14 @@ const Result = () => {
                   style={{ width: "100%", height: "auto" }}
                 />
                 <p> {image.name}</p>
-                <p> probability </p>
-                <p> result</p>
+                <p>
+                  {" "}
+                  {t("result.Result")} {t("result.Glaucoma")}
+                  {"% "}
+                  {t("result.Normal")}
+                  {"% "}
+                </p>
+                <p> {t("result.ResultNormal")}</p>
               </div>
             ))}
           </div>
