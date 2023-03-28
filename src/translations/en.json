@@ -27,6 +27,11 @@
     },
     "result": {
         "Name": "Detection result",
-        "New Picture Button": "Check new pictures"
+        "New Picture Button": "Check new pictures",
+        "Result": "Result: ",
+        "Glaucoma": "Glaucoma ",
+        "Normal": "Normal ",
+        "ResultGlaucoma": "Glaucoma Positive",
+        "ResultNormal": "Glaucoma Negative"
     }
 }

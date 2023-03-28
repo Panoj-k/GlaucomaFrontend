@@ -27,7 +27,12 @@
     },
     "result": {
         "Name": "ผลการวิเคราะห์",
-        "New Picture Button": "ตรวจรูปภาพใหม่"
+        "New Picture Button": "ตรวจรูปภาพใหม่",
+        "Result": "ผลการวิเคราะห์ ",
+        "Glaucoma": "เป็นโรค ",
+        "Normal": "ปกติ ",
+        "ResultGlaucoma": "เป็นโรค",
+        "ResultNormal": "ปกติ"
     }
     
 }
