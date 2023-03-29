@@ -82,10 +82,20 @@ const Detection = () => {
   //   const result = PredictionModel(images);
   //   return result;
   // };
-
-  const handleCheck = () => {
+  const mapResult = (images: ImageInterface[], results: any) => {
+    images.forEach((image, i) => {
+      console.log("mapping result");
+      console.log(image.result);
+      image.result = results[i];
+      console.log(image.result);
+    });
+  };
+  const handleCheck = async () => {
     console.log("getting prediction...");
-    PredictionModel(images);
+    const results = await PredictionModel(images);
+    console.log("results from function is: ");
+    console.log(results);
+    mapResult(images, results);
     history.push("/result");
     // send images to check
   };
