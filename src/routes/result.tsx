@@ -78,12 +78,19 @@ const Result = () => {
                 <p> {image.name}</p>
                 <p>
                   {" "}
-                  {t("result.Result")} {t("result.Glaucoma")}
+                  {t("result.Result")} {t("result.Glaucoma")} {image.result[0]}
                   {"% "}
-                  {t("result.Normal")}
+                  {t("result.Normal")} {image.result[1]}
                   {"% "}
                 </p>
-                <p> {t("result.ResultNormal")}</p>
+                {/* <p> {t("result.ResultNormal")}</p> */}
+                <p>
+                  {" "}
+                  {image.result[0] > image.result[1] &&
+                    t("result.ResultNormal")}{" "}
+                  {image.result[0] < image.result[1] &&
+                    t("result.ResultNormal")}
+                </p>
               </div>
             ))}
           </div>
