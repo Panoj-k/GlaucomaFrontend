@@ -89,7 +89,7 @@ const Result = () => {
                   {image.result[0] > image.result[1] &&
                     t("result.ResultNormal")}{" "}
                   {image.result[0] < image.result[1] &&
-                    t("result.ResultNormal")}
+                    t("result.ResultGlaucoma")}
                 </p>
               </div>
             ))}
