@@ -115,15 +115,25 @@ export async function PredictionModel(images: ImageInterface[]) {
             imageFile.rows,
             cv.CV_8UC4
           );
-          cv.cvtColor(imageFile, dst, cv.COLOR_BGR2RGB);
+          cv.cvtColor(imageFile, dst, cv.COLOR_RGBA2RGB);
           cv.resize(dst, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
-          cv.normalize(dst, dst, 0, 255, cv.NORM_MINMAX);
+          dst.convertTo(dst, cv.CV_32F, 1 / 255.0);
+          //cv.normalize(dst, dst, 0, 255, cv.NORM_MINMAX);
+          console.log("image after cv normalized");
+          console.log(dst.data32F);
+
           console.log("here2");
           const input = tf.tensor(
-            dst.data,
+            dst.data32F,
             [1, dst.rows, dst.cols, 3],
             "float32"
           );
+          // let input = tf.tensor(
+          //   dst.data32F,
+          //   [dst.rows, dst.cols, 3],
+          //   "float32"
+          // );
+          // input = tf.expandDims(input, 0);
           const prediction = model.predict(input) as tf.Tensor;
           const data = await prediction.data();
           console.log("data");
