@@ -22,6 +22,7 @@ import { PredictionModel } from "../model/PredictionModel";
 const Detection = () => {
   const [step, setStep] = useState(0);
   const [isImageEmpty, setIsImageEmpty] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   const steps = ["Upload", "Review", "Result"];
   const { t } = useTranslation();
@@ -91,6 +92,9 @@ const Detection = () => {
     });
   };
   const handleCheck = async () => {
+    if (!clicked) {
+      setClicked(true);
+    }
     console.log("getting prediction...");
     const results = await PredictionModel(images);
     console.log("results from function is: ");
@@ -252,7 +256,7 @@ const Detection = () => {
         {step > 0 && (
           <Button
             variant="contained"
-            disabled={isImageEmpty}
+            disabled={isImageEmpty || clicked}
             onClick={handleCheck}
           >
             {t("detection.Check Button")}
