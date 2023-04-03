@@ -49,10 +49,11 @@ const Detection = () => {
         });
       });
 
-      setStep(1);
-
       Promise.all(readers)
-        .then((newImages) => setImages([...images, ...newImages]))
+        .then((newImages) => {
+          setImages([...images, ...newImages]);
+          setStep(1);
+        })
         .catch((error) => console.error(error));
     },
     [images]
