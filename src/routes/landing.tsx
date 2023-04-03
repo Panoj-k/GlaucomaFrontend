@@ -28,7 +28,7 @@ const Landing = () => {
         <h1>{t("langing.Glaucoma Checker")}</h1>
         <div className="info-padding">
           <div className="information">
-            <p>{t("langing.Description")}</p>
+            {/* <p>{t("langing.Description")}</p> */}
             <p>{t("langing.Getting Start")}</p>
             <Button
               variant="contained"
