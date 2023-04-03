@@ -110,13 +110,12 @@ export async function PredictionModel(images: ImageInterface[]) {
         console.log("here3");
         if (imageElement && imageElement.src) {
           const imageFile = cv.imread(imageElement);
-          const dst: Mat = new cv.Mat(
-            imageFile.cols,
-            imageFile.rows,
-            cv.CV_8UC4
-          );
+          let dst: Mat = new cv.Mat(imageFile.cols, imageFile.rows, cv.CV_32F);
           cv.cvtColor(imageFile, dst, cv.COLOR_RGBA2RGB);
+          console.log(imageFile.data32F);
+          console.log(dst.data32F);
           cv.resize(dst, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
+          console.log(dst.data32F);
           dst.convertTo(dst, cv.CV_32F, 1 / 255.0);
           //cv.normalize(dst, dst, 0, 255, cv.NORM_MINMAX);
           console.log("image after cv normalized");
