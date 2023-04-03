@@ -28,11 +28,11 @@
     "result": {
         "Name": "ผลการวิเคราะห์",
         "New Picture Button": "ตรวจรูปภาพใหม่",
-        "Result": "ผลการวิเคราะห์ ",
+        "Result": "โอกาสที่จะเป็นโรคต้อหิน: ",
         "Glaucoma": "เป็นโรค ",
         "Normal": "ปกติ ",
-        "ResultGlaucoma": "เป็นโรค",
-        "ResultNormal": "ปกติ"
+        "ResultGlaucoma": "ผลการวิเคราะห์: เป็นโรคต้อหิน",
+        "ResultNormal": "ผลการวิเคราะห์: ปกติ"
     }
     
 }
