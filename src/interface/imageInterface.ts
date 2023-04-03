@@ -1,7 +1,7 @@
 export interface ImageInterface {
   url: string;
   name: string;
-  result: string;
+  result: number[];
 }
 
 //export default Image;

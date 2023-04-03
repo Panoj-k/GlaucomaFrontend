@@ -40,7 +40,7 @@ const Detection = () => {
             const image = {
               url: reader.result as string,
               name: file.name,
-              result: "undef",
+              result: [0, 0],
             };
             resolve(image);
           };
