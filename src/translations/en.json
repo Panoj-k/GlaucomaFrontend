@@ -28,10 +28,10 @@
     "result": {
         "Name": "Detection result",
         "New Picture Button": "Check new pictures",
-        "Result": "Result: ",
+        "Result": "Probability of glaucoma: ",
         "Glaucoma": "Glaucoma ",
         "Normal": "Normal ",
-        "ResultGlaucoma": "Glaucoma Positive",
-        "ResultNormal": "Glaucoma Negative"
+        "ResultGlaucoma": "Result: Glaucoma",
+        "ResultNormal": "Result: Normal"
     }
 }
