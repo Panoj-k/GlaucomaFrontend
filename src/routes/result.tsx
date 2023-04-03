@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { Margin } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
 import { ImageContext } from "../context/imageContext";
+import ResultField from "../components/resultField/resultField";
 
 const Result = () => {
   const steps = ["Upload", "Review", "Result"];
@@ -97,6 +98,9 @@ const Result = () => {
           {t("result.New Picture Button")}
         </Button>
       </Box>
+      {/* <Box>
+        <ResultField images={images} />
+      </Box> */}
     </Container>
   );
 };
