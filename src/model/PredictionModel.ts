@@ -8,8 +8,9 @@ let imageList: tf.Tensor<tf.Rank>[] = [];
 export async function loadModel() {
   // const model = await loadLayersModel(window.origin + "/model_js/model.json");
   console.log("loading model...");
-  const model = await loadLayersModel("model_js/model.json");
-  console.log("model is loaded");
+  // const model = await loadLayersModel("model_js/model.json");
+  const model = await loadLayersModel("modelVGG_js/model.json");
+  console.log("model VGG  is loaded");
   return model;
 }
 
