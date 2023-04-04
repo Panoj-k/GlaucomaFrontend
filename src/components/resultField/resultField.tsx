@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
+import { Button } from "@mui/material";
 
 export default function ResultField({ images }: { images: ImageInterface[] }) {
   const { t } = useTranslation();
@@ -25,6 +26,10 @@ export default function ResultField({ images }: { images: ImageInterface[] }) {
 
   return (
     <div>
+      <Button variant="contained" onClick={handleSort}>
+        {t("result.Sort")}{" "}
+        {sortOrder === "asc" ? t("result.DESC") : t("result.ASC")}
+      </Button>
       <button onClick={handleSort}>
         Sort {sortOrder === "asc" ? "Descending" : "Ascending"}
       </button>
