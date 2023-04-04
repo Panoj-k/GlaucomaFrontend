@@ -26,13 +26,11 @@ export default function ResultField({ images }: { images: ImageInterface[] }) {
 
   return (
     <div>
-      <Button variant="contained" onClick={handleSort}>
+      <Button variant="contained" onClick={handleSort} sx={{ marginBottom: 2 }}>
         {t("result.Sort")}{" "}
-        {sortOrder === "asc" ? t("result.DESC") : t("result.ASC")}
+        {sortOrder === "asc" ? t("result.ASC") : t("result.DESC")}
       </Button>
-      <button onClick={handleSort}>
-        Sort {sortOrder === "asc" ? "Descending" : "Ascending"}
-      </button>
+
       <div
         style={{
           display: "flex",

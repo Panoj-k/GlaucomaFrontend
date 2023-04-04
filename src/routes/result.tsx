@@ -53,6 +53,30 @@ const Result = () => {
           p: 2,
           minWidth: 300,
           margin: 2,
+          maxHeight: 600,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            overflowY: "scroll",
+            minHeight: "300px",
+            maxHeight: "600px",
+          }}
+        >
+          <ResultField images={images} />
+        </div>
+      </Box>
+      {/* <Box
+        textAlign={"center"}
+        sx={{
+          bgcolor: "background.paper",
+          boxShadow: 1,
+          borderRadius: 2,
+          p: 2,
+          minWidth: 300,
+          margin: 2,
         }}
       >
         {images.length > 0 && (
@@ -81,7 +105,6 @@ const Result = () => {
                   {t("result.Result")} {image.result[1]}
                   {"% "}
                 </p>
-                {/* <p> {t("result.ResultNormal")}</p> */}
                 <p>
                   {image.result[0] > image.result[1] &&
                     t("result.ResultNormal")}{" "}
@@ -92,34 +115,11 @@ const Result = () => {
             ))}
           </div>
         )}
-      </Box>
+      </Box> */}
       <Box textAlign={"center"} sx={{ marginBottom: 2 }}>
         <Button variant="contained" onClick={handleCheckMore}>
           {t("result.New Picture Button")}
         </Button>
-      </Box>
-      <Box
-        textAlign={"center"}
-        sx={{
-          bgcolor: "background.paper",
-          boxShadow: 1,
-          borderRadius: 2,
-          p: 2,
-          minWidth: 300,
-          margin: 2,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            overflowY: "scroll",
-            minHeight: "300px",
-            maxHeight: "600px",
-          }}
-        >
-          <ResultField images={images} />
-        </div>
       </Box>
     </Container>
   );
