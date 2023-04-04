@@ -1,6 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { ImageInterface } from "../../interface/imageInterface";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import CardMedia from "@mui/material/CardMedia";
+import Grid from "@mui/material/Grid";
 
 export default function ResultField({ images }: { images: ImageInterface[] }) {
   const { t } = useTranslation();
@@ -23,28 +28,42 @@ export default function ResultField({ images }: { images: ImageInterface[] }) {
       <button onClick={handleSort}>
         Sort {sortOrder === "asc" ? "Descending" : "Ascending"}
       </button>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          overflowY: "scroll",
+          minHeight: "300px",
+          maxHeight: "600px",
+        }}
+      >
         {sortedImages.map((image, index) => (
           <div
             key={index}
             style={{ width: "30%", padding: 5, position: "relative" }}
           >
-            <img
-              id={`glaucomaImage${index}`}
-              src={image.url}
-              alt={`Uploaded picture ${index + 1}`}
-              style={{ width: "100%", height: "auto" }}
-            />
-            <p> {image.name}</p>
-            <p>
-              {t("result.Result")} {image.result[1]}
-              {"% "}
-            </p>
-            {/* <p> {t("result.ResultNormal")}</p> */}
-            <p>
-              {image.result[0] > image.result[1] && t("result.ResultNormal")}{" "}
-              {image.result[0] < image.result[1] && t("result.ResultGlaucoma")}
-            </p>
+            <Card sx={{ minWidth: 275 }}>
+              <CardMedia
+                component="img"
+                image={image.url}
+                alt={`Uploaded picture ${index + 1}`}
+              />
+              <CardContent>
+                <Typography sx={{ fontSize: 16 }} gutterBottom>
+                  {image.name}
+                </Typography>
+                <Typography sx={{ fontSize: 14 }} gutterBottom>
+                  {t("result.Result")} {image.result[1]}
+                  {"% "}
+                </Typography>
+                <Typography variant="body2">
+                  {image.result[0] > image.result[1] &&
+                    t("result.ResultNormal")}{" "}
+                  {image.result[0] < image.result[1] &&
+                    t("result.ResultGlaucoma")}
+                </Typography>
+              </CardContent>
+            </Card>
           </div>
         ))}
       </div>
