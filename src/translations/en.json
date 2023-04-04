@@ -32,6 +32,9 @@
         "Glaucoma": "Glaucoma ",
         "Normal": "Normal ",
         "ResultGlaucoma": "Result: Glaucoma",
-        "ResultNormal": "Result: Normal"
+        "ResultNormal": "Result: Normal",
+        "Sort": "Sort",
+        "ASC": "ASC",
+        "DESC": "DESC"
     }
 }
