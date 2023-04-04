@@ -68,54 +68,6 @@ const Result = () => {
           <ResultField images={images} />
         </div>
       </Box>
-      {/* <Box
-        textAlign={"center"}
-        sx={{
-          bgcolor: "background.paper",
-          boxShadow: 1,
-          borderRadius: 2,
-          p: 2,
-          minWidth: 300,
-          margin: 2,
-        }}
-      >
-        {images.length > 0 && (
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              overflowY: "scroll",
-              minHeight: "300px",
-              maxHeight: "600px",
-            }}
-          >
-            {images.map((image, index) => (
-              <div
-                key={index}
-                style={{ width: "30%", padding: 5, position: "relative" }}
-              >
-                <img
-                  id={`glaucomaImage${index}`}
-                  src={image.url}
-                  alt={`Uploaded picture ${index + 1}`}
-                  style={{ width: "100%", height: "auto" }}
-                />
-                <p> {image.name}</p>
-                <p>
-                  {t("result.Result")} {image.result[1]}
-                  {"% "}
-                </p>
-                <p>
-                  {image.result[0] > image.result[1] &&
-                    t("result.ResultNormal")}{" "}
-                  {image.result[0] < image.result[1] &&
-                    t("result.ResultGlaucoma")}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
-      </Box> */}
       <Box textAlign={"center"} sx={{ marginBottom: 2 }}>
         <Button variant="contained" onClick={handleCheckMore}>
           {t("result.New Picture Button")}
