@@ -98,9 +98,29 @@ const Result = () => {
           {t("result.New Picture Button")}
         </Button>
       </Box>
-      {/* <Box>
-        <ResultField images={images} />
-      </Box> */}
+      <Box
+        textAlign={"center"}
+        sx={{
+          bgcolor: "background.paper",
+          boxShadow: 1,
+          borderRadius: 2,
+          p: 2,
+          minWidth: 300,
+          margin: 2,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            overflowY: "scroll",
+            minHeight: "300px",
+            maxHeight: "600px",
+          }}
+        >
+          <ResultField images={images} />
+        </div>
+      </Box>
     </Container>
   );
 };
