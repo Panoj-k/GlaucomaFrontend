@@ -37,35 +37,39 @@ export default function ResultField({ images }: { images: ImageInterface[] }) {
           maxHeight: "600px",
         }}
       >
-        {sortedImages.map((image, index) => (
-          <div
-            key={index}
-            style={{ width: "30%", padding: 5, position: "relative" }}
-          >
-            <Card sx={{ minWidth: 275 }}>
-              <CardMedia
-                component="img"
-                image={image.url}
-                alt={`Uploaded picture ${index + 1}`}
-              />
-              <CardContent>
-                <Typography sx={{ fontSize: 16 }} gutterBottom>
-                  {image.name}
-                </Typography>
-                <Typography sx={{ fontSize: 14 }} gutterBottom>
-                  {t("result.Result")} {image.result[1]}
-                  {"% "}
-                </Typography>
-                <Typography variant="body2">
-                  {image.result[0] > image.result[1] &&
-                    t("result.ResultNormal")}{" "}
-                  {image.result[0] < image.result[1] &&
-                    t("result.ResultGlaucoma")}
-                </Typography>
-              </CardContent>
-            </Card>
-          </div>
-        ))}
+        <Grid container spacing={2}>
+          {sortedImages.map((image, index) => (
+            // <div
+            //   key={index}
+            //   style={{ width: "30%", padding: 5, position: "relative" }}
+            // >
+            <Grid item xs={12} sm={6} md={4} key={image.name}>
+              <Card>
+                <CardMedia
+                  component="img"
+                  image={image.url}
+                  alt={`Uploaded picture ${index + 1}`}
+                />
+                <CardContent>
+                  <Typography sx={{ fontSize: 16 }} gutterBottom>
+                    {image.name}
+                  </Typography>
+                  <Typography sx={{ fontSize: 14 }} gutterBottom>
+                    {t("result.Result")} {image.result[1]}
+                    {"% "}
+                  </Typography>
+                  <Typography variant="body2">
+                    {image.result[0] > image.result[1] &&
+                      t("result.ResultNormal")}{" "}
+                    {image.result[0] < image.result[1] &&
+                      t("result.ResultGlaucoma")}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+            // </div>
+          ))}
+        </Grid>
       </div>
     </div>
   );
