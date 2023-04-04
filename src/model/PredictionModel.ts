@@ -139,8 +139,8 @@ export async function PredictionModel(images: ImageInterface[]) {
           console.log("data");
           console.log(data);
           console.log(data[0], data[1]);
-          const probNormal: number = parseFloat(data[0].toFixed(2)) * 100;
-          const probGlaucoma: number = parseFloat(data[1].toFixed(2)) * 100;
+          const probNormal: number = parseFloat((data[0] * 100).toFixed(2));
+          const probGlaucoma: number = parseFloat((data[1] * 100).toFixed(2));
           console.log(probNormal, probGlaucoma);
           resolve([probNormal, probGlaucoma]);
         }
