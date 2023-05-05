@@ -10,8 +10,10 @@ export async function loadModel() {
   console.log("loading model...");
   // const model = await loadLayersModel("model_js/model.json");
   // const model = await loadLayersModel("modelVGG_js/model.json");
-  const model = await loadLayersModel("modelDenseNet_js/model.json");
-  console.log("model denseNet  is loaded");
+  // const model = await loadLayersModel("modelDenseNet_js/model.json");
+  // const model = await loadLayersModel("model_VGGM5_js/model.json");
+  const model = await loadLayersModel("model_InceptionM6_js/model.json");
+  console.log("model Inception is loaded");
   return model;
 }
 
@@ -107,23 +109,22 @@ export async function PredictionModel(images: ImageInterface[]) {
         `glaucomaImage${i}`
       ) as HTMLImageElement;
       const _imagefile = new Image();
-      console.log("here");
       _imagefile.onload = async () => {
-        console.log("here3");
+        // console.log("here3");
         if (imageElement && imageElement.src) {
           const imageFile = cv.imread(imageElement);
           let dst: Mat = new cv.Mat(imageFile.cols, imageFile.rows, cv.CV_32F);
           cv.cvtColor(imageFile, dst, cv.COLOR_RGBA2RGB);
-          console.log(imageFile.data32F);
-          console.log(dst.data32F);
-          cv.resize(dst, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
+          // console.log(imageFile.data32F);
+          // console.log(dst.data32F);
+          cv.resize(dst, dst, new cv.Size(299, 299), 0, 0, cv.INTER_AREA);
           console.log(dst.data32F);
           dst.convertTo(dst, cv.CV_32F, 1 / 255.0);
           //cv.normalize(dst, dst, 0, 255, cv.NORM_MINMAX);
-          console.log("image after cv normalized");
-          console.log(dst.data32F);
+          // console.log("image after cv normalized");
+          // console.log(dst.data32F);
 
-          console.log("here2");
+          // console.log("here2");
           const input = tf.tensor(
             dst.data32F,
             [1, dst.rows, dst.cols, 3],
@@ -137,12 +138,12 @@ export async function PredictionModel(images: ImageInterface[]) {
           // input = tf.expandDims(input, 0);
           const prediction = model.predict(input) as tf.Tensor;
           const data = await prediction.data();
-          console.log("data");
-          console.log(data);
+          // console.log("data");
+          // console.log(data);
           console.log(data[0], data[1]);
           const probNormal: number = parseFloat((data[0] * 100).toFixed(2));
           const probGlaucoma: number = parseFloat((data[1] * 100).toFixed(2));
-          console.log(probNormal, probGlaucoma);
+          // console.log(probNormal, probGlaucoma);
           resolve([probNormal, probGlaucoma]);
         }
       };
