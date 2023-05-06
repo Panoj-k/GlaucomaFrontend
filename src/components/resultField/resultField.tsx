@@ -44,15 +44,19 @@ export default function ResultField({ images }: { images: ImageInterface[] }) {
                 <Typography sx={{ fontSize: 16 }} gutterBottom>
                   {image.name}
                 </Typography>
-                <Typography sx={{ fontSize: 14 }} gutterBottom>
+                {/* <Typography sx={{ fontSize: 14 }} gutterBottom>
                   {t("result.Result")} {image.result[1]}
                   {"% "}
-                </Typography>
+                </Typography> */}
                 <Typography variant="body2">
                   {image.result[0] > image.result[1] &&
                     t("result.ResultNormal")}{" "}
                   {image.result[0] < image.result[1] &&
                     t("result.ResultGlaucoma")}
+                </Typography>
+                <Typography variant="body2" color={"red"}>
+                  {image.result[0] < image.result[1] &&
+                    t("result.HighRiskAlert")}
                 </Typography>
               </CardContent>
             </Card>

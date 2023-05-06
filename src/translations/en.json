@@ -13,10 +13,10 @@
         "Step2": "Result",
         "Upload Step": "Upload step",
         "Upload Instruction": "Please drag and drop pictures in the box below or click select pictures button to add pictures.",
-        "Upload Instruction2": "Accepted File Types: .jpg, .jpeg, .png. Recommend picture at 20.",
+        "Upload Instruction2": "Accepted File Types: .jpg, .jpeg, .png. Recommend uploaded picture under 20 pictures.",
         "Review Step": "Review step",
         "Review Instruction": "Please check the correctness of the pictures. You can edit the picture name in the box below each picture. Click the delete button on the top right of the picture to remove.",
-        "Review Instruction2": "To add more picture click add picture button. Recommend picture at 20",
+        "Review Instruction2": "To add more picture click add picture button. Recommend uploaded picture under 20 pictures.",
         "Review Instruction3": "Click check button to start detection",
         "Drop Zone":"Drag and drop pictures here, or click select pictures",
         "Drop Zone Drag": "Drop the pictures here ...",
@@ -31,10 +31,11 @@
         "Result": "Probability of glaucoma: ",
         "Glaucoma": "Glaucoma ",
         "Normal": "Normal ",
-        "ResultGlaucoma": "Result: Glaucoma",
-        "ResultNormal": "Result: Normal",
-        "Sort": "Sort",
-        "ASC": "Ascending",
-        "DESC": "Decending"
+        "ResultGlaucoma": "Result: High risk of glaucoma",
+        "ResultNormal": "Result: Low risk of glaucoma",
+        "Sort": "Switch to sort by",
+        "ASC": "high risk first",
+        "DESC": "low risk first",
+        "HighRiskAlert": "*Recommend to consult with ophthalmologist"
     }
 }
