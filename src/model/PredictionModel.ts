@@ -15,16 +15,14 @@ export async function loadModel() {
   // const model = await loadLayersModel("predictionModel_DenseM3D640E150_js/model.json");
   // const model = await loadLayersModel("predictionModel_DenseE100_js/model.json");
   // ------
-  // const model = await loadLayersModel("model_VGGM5_js/model.json");
+  const model = await loadLayersModel("model_VGGM5_js/model.json");
   // const model = await loadLayersModel("predictionModel_VGGM5D640E150_js/model.json");
   // const model = await loadLayersModel("predictionModel_VGGE100_js/model.json");
   // ------
   // const model = await loadLayersModel("model_InceptionM6_js/model.json");
   // const model = await loadLayersModel("predictionModel_InceptionM6D640E200_js/model.json"); //Need Check Different output 2 times.
   // const model = await loadLayersModel("predictionModel_InceptionE100_js/model.json");
-  const model = await loadLayersModel(
-    "predictionModel_InceptionM6D640E100_js/model.json"
-  );
+  // const model = await loadLayersModel("predictionModel_InceptionM6D640E100_js/model.json");
   console.log("model Inception is loaded");
   return model;
 }
@@ -129,7 +127,7 @@ export async function PredictionModel(images: ImageInterface[]) {
           cv.cvtColor(imageFile, dst, cv.COLOR_RGBA2RGB);
           // console.log(imageFile.data32F);
           // console.log(dst.data32F);
-          cv.resize(dst, dst, new cv.Size(299, 299), 0, 0, cv.INTER_AREA);
+          cv.resize(dst, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
           console.log(dst.data32F);
           dst.convertTo(dst, cv.CV_32F, 1 / 255.0);
           //cv.normalize(dst, dst, 0, 255, cv.NORM_MINMAX);
