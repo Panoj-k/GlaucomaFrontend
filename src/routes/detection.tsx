@@ -18,6 +18,7 @@ import { useHistory } from "react-router-dom";
 import { ImageContext } from "../context/imageContext";
 import { ImageInterface } from "../interface/imageInterface";
 import { PredictionModel } from "../model/PredictionModel";
+import { TIFF } from "tiff.js";
 
 const Detection = () => {
   const [step, setStep] = useState(0);
@@ -30,23 +31,75 @@ const Detection = () => {
   //---picture drop
   const { images, setImages } = useContext(ImageContext);
 
+  async function convertTiffToPng(tiffFile: File): Promise<Blob> {
+    const tiffData = await tiffFile.arrayBuffer();
+    console.log(tiffData);
+    var int8view = new Uint8Array(tiffData);
+    console.log(int8view);
+    let blob1 = new Blob([new Uint8Array(int8view)], { type: "image/png" });
+
+    // const tiffImage = TIFF.decode(tiffData);
+
+    // const canvas = document.createElement("canvas");
+    // canvas.width = tiffImage.width;
+    // canvas.height = tiffImage.height;
+
+    // const ctx = canvas.getContext("2d");
+    // if (!ctx) {
+    //   throw new Error("Failed to get 2D context for canvas");
+    // }
+
+    // const imageData = ctx.createImageData(tiffImage.width, tiffImage.height);
+    // imageData.data.set(tiffImage.getImageData());
+
+    // ctx.putImageData(imageData, 0, 0);
+
+    // const pngDataUrl = canvas.toDataURL("image/png");
+    // const pngData = atob(pngDataUrl.split(",")[1]);
+
+    // const pngArray = new Uint8Array(pngData.length);
+    // for (let i = 0; i < pngData.length; i++) {
+    //   pngArray[i] = pngData.charCodeAt(i);
+    // }
+
+    return new Blob([int8view], { type: "image/png" });
+  }
+
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
       const readers = acceptedFiles.map((file) => {
         const reader = new FileReader();
-
-        return new Promise<ImageInterface>((resolve, reject) => {
-          reader.onload = () => {
-            const image = {
-              url: reader.result as string,
-              name: file.name,
-              result: [0, 0],
+        if (file.type === "image/tiff") {
+          return new Promise<ImageInterface>((resolve, reject) => {
+            reader.onload = async () => {
+              const pngBlob = await convertTiffToPng(file);
+              console.log(pngBlob);
+              const pngUrl = URL.createObjectURL(pngBlob);
+              console.log(pngUrl);
+              const image = {
+                url: URL.createObjectURL(pngBlob),
+                name: file.name.replace(/\.[^/.]+$/, "") + ".png",
+                result: [0, 0],
+              };
+              resolve(image);
             };
-            resolve(image);
-          };
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
+            reader.onerror = reject;
+            reader.readAsArrayBuffer(file);
+          });
+        } else {
+          return new Promise<ImageInterface>((resolve, reject) => {
+            reader.onload = () => {
+              const image = {
+                url: reader.result as string,
+                name: file.name,
+                result: [0, 0],
+              };
+              resolve(image);
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(file);
+          });
+        }
       });
 
       Promise.all(readers)
