@@ -44,10 +44,6 @@ export default function ResultField({ images }: { images: ImageInterface[] }) {
                 <Typography sx={{ fontSize: 16 }} gutterBottom>
                   {image.name}
                 </Typography>
-                {/* <Typography sx={{ fontSize: 14 }} gutterBottom>
-                  {t("result.Result")} {image.result[1]}
-                  {"% "}
-                </Typography> */}
                 <Typography variant="body2">
                   {image.result[0] > image.result[1] &&
                     t("result.ResultNormal")}{" "}
@@ -61,7 +57,6 @@ export default function ResultField({ images }: { images: ImageInterface[] }) {
               </CardContent>
             </Card>
           </Grid>
-          // </div>
         ))}
       </Grid>
     </div>

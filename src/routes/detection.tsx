@@ -79,11 +79,6 @@ const Detection = () => {
 
   const history = useHistory();
 
-  // const getPrediction = () => {
-  //   console.log("getting prediction...");
-  //   const result = PredictionModel(images);
-  //   return result;
-  // };
   const mapResult = (images: ImageInterface[], results: any) => {
     images.forEach((image, i) => {
       console.log("mapping result");
@@ -92,6 +87,8 @@ const Detection = () => {
       console.log(image.result);
     });
   };
+
+  // send images to check
   const handleCheck = async () => {
     if (!clicked) {
       setClicked(true);
@@ -102,7 +99,6 @@ const Detection = () => {
     console.log(results);
     mapResult(images, results);
     history.push("/result");
-    // send images to check
   };
 
   return (

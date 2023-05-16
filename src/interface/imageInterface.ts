@@ -3,5 +3,3 @@ export interface ImageInterface {
   name: string;
   result: number[];
 }
-
-//export default Image;
