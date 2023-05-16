@@ -26,11 +26,9 @@ export default function MenuAppBar() {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
-    console.log("handle close is called");
     setAnchorEl(null);
   };
   const handleLanguageSelect = (lang: Language) => {
-    console.log("handle language select is called");
     changeLanguage(lang);
     handleClose();
   };
@@ -48,7 +46,6 @@ export default function MenuAppBar() {
   const history = useHistory();
   const handleHomeClick = () => {
     history.push("/");
-    console.log(history);
   };
 
   return (

@@ -81,10 +81,7 @@ const Detection = () => {
 
   const mapResult = (images: ImageInterface[], results: any) => {
     images.forEach((image, i) => {
-      console.log("mapping result");
-      console.log(image.result);
       image.result = results[i];
-      console.log(image.result);
     });
   };
 
@@ -93,10 +90,8 @@ const Detection = () => {
     if (!clicked) {
       setClicked(true);
     }
-    console.log("getting prediction...");
+    console.log("getting prediction... please wait");
     const results = await PredictionModel(images);
-    console.log("results from function is: ");
-    console.log(results);
     mapResult(images, results);
     history.push("/result");
   };

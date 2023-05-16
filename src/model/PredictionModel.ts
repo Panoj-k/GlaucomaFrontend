@@ -40,7 +40,6 @@ export async function PredictionModel(images: ImageInterface[]) {
           let dst: Mat = new cv.Mat(imageFile.cols, imageFile.rows, cv.CV_32F);
           cv.cvtColor(imageFile, dst, cv.COLOR_RGBA2RGB);
           cv.resize(dst, dst, new cv.Size(224, 224), 0, 0, cv.INTER_AREA);
-          console.log(dst.data32F);
           dst.convertTo(dst, cv.CV_32F, 1 / 255.0);
 
           const input = tf.tensor(
